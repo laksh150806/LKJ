@@ -6,7 +6,7 @@ Includes customer/admin demo views, gold/silver catalogue, search/filter/sort, j
 
 **Not production commerce.** Demo role switching is not authentication. All state is local to each browser. No real personal/payment details should be entered. Real authentication, a server-side single-admin-email allowlist, database and image storage, a verified purity-specific rate API with freshness checks and IST timestamps, server-side price quotes, payment gateway with signed webhooks, shipping integrations, and confirmed policies are required before accepting real sales. Never promote these client-side controls to real authorization or accept totals from the browser.
 
-Demo rates are invented and clearly labelled. Illustrative photos are from Unsplash; they are not shop inventory. Sample GST and delivery are configurable demonstrations, not confirmed business or tax settings. The Maps link is a search for the user-supplied shop name/location, not a verified place record.
+Demo rates are invented and clearly labelled. Illustrative photos are from Unsplash; they are not shop inventory. Sample GST and delivery are configurable demonstrations, not confirmed business or tax settings. The full shop address matches the Google Maps screenshot supplied by the user. The Maps link searches the shop name plus that full address; no exact Place ID has been verified. The displayed contact number +91 98407 63243 is supplied directly by the user and replaces the landline visible in their screenshot.
 
 Photo sources:
 - https://unsplash.com/photos/1617038260897-41a1f14a8ca0 (image CDN ID)
