@@ -20,8 +20,12 @@ The home screen now contains Gold and Silver selection cards and shop/policy det
 
 Pagination currently limits rendered products in this browser-local demo. A production database should also paginate data and image retrieval on the server; local demo storage is not a scalable inventory backend.
 
-## Automatic category pictures
+## Keyword category-image search
 
-Category covers are independent of product images. Names for pendants/lockets/chains/necklaces/chokers, earrings/hoops/studs/jhumkas, rings/bands, and bangles/bracelets select from the bundled illustrative photo library, including common singular/plural forms and some Tamil names. Existing empty categories receive a cover without any data reset. Unknown names use a photo from that category when available, otherwise a general jewellery cover; the admin preview explains when there is no name match. This is curated local matching, not an AI generator or a live image search.
+The previous fixed photo-library matching and generic necklace fallback have been removed. New empty categories now perform actual browser-side Wikimedia Commons API searches using the category name and selected metal. Existing product photos and deliberately uploaded category covers are preserved. Existing empty categories such as Pendant and Dollars are searched when their category screen opens.
 
-Admins can preview automatic covers while naming a category, choose another library image, upload a custom cover, or restore automatic selection. Custom covers persist separately by metal/category, survive renaming, and are removed with their category. Individual product photos are unchanged. As elsewhere in this preview, uploads and category changes are browser-local.
+The search requests bitmap photos with image metadata, filters unrelated currency/medal imagery, requires category terms and an eligible open license, and ranks candidates. The first candidate is selected automatically. Admins can inspect the source/attribution, choose another returned image, refine the search words, or upload their own cover. Source, creator and license credits are displayed for searched covers. Results are cached in browser-local storage. No image-search secret is required for this provider.
+
+Dollar/Dollars is interpreted as jewellery by adding pendant/Indian jewellery context. **The exact Dollar search returned no suitable image in live testing. It now displays no match; it does not substitute thali or a generic necklace.** Free Commons results can be historical and coverage of specific Indian jewellery is limited. A broader licensed image-search API is still needed for reliable coverage of those designs; no such credentials are configured. This is actual keyword retrieval, not an AI generator or an unrestricted Google Images integration.
+
+Live browser checks verified API requests and a loaded Pendant result, no unrelated Dollar fallback, selecting another result, cache persistence, custom query search, custom upload, and mobile layout. Existing demo storage/security/payment limitations still apply.
