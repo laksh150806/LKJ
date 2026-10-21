@@ -19,3 +19,9 @@ Photo sources:
 The home screen now contains Gold and Silver selection cards and shop/policy details. Each metal opens a dedicated category screen; each category opens its own product catalogue with 12 items per page and lazy image loading. Breadcrumbs, Back and Home controls, and browser history support navigation. Search, sort, page and scroll are retained in memory when returning to a screen during the current visit. Product details retain photo galleries and ordering controls. Admin category controls live on category screens; jewellery creation defaults to the current category.
 
 Pagination currently limits rendered products in this browser-local demo. A production database should also paginate data and image retrieval on the server; local demo storage is not a scalable inventory backend.
+
+## Automatic category pictures
+
+Category covers are independent of product images. Names for pendants/lockets/chains/necklaces/chokers, earrings/hoops/studs/jhumkas, rings/bands, and bangles/bracelets select from the bundled illustrative photo library, including common singular/plural forms and some Tamil names. Existing empty categories receive a cover without any data reset. Unknown names use a photo from that category when available, otherwise a general jewellery cover; the admin preview explains when there is no name match. This is curated local matching, not an AI generator or a live image search.
+
+Admins can preview automatic covers while naming a category, choose another library image, upload a custom cover, or restore automatic selection. Custom covers persist separately by metal/category, survive renaming, and are removed with their category. Individual product photos are unchanged. As elsewhere in this preview, uploads and category changes are browser-local.
