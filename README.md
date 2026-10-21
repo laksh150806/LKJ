@@ -13,3 +13,9 @@ Photo sources:
 - https://images.unsplash.com/photo-1605100804763-247f67b3557e
 - https://images.unsplash.com/photo-1599643477877-530eb83abc8e
 - https://images.unsplash.com/photo-1611591437281-460bfbe1220a
+
+## Navigation update
+
+The home screen now contains Gold and Silver selection cards and shop/policy details. Each metal opens a dedicated category screen; each category opens its own product catalogue with 12 items per page and lazy image loading. Breadcrumbs, Back and Home controls, and browser history support navigation. Search, sort, page and scroll are retained in memory when returning to a screen during the current visit. Product details retain photo galleries and ordering controls. Admin category controls live on category screens; jewellery creation defaults to the current category.
+
+Pagination currently limits rendered products in this browser-local demo. A production database should also paginate data and image retrieval on the server; local demo storage is not a scalable inventory backend.
