@@ -1,4 +1,10 @@
-# L K Jewellers — private design preview
+# L K Jewellers
+
+## Current authentication status
+
+Real Supabase session/profile integration is prepared, and the database permissions are deployed. Email sign-in stays disabled until a production sender is configured and tested. Demo role switching and demo order creation have been removed. See [authentication setup](backend/SETUP.md) for the remaining owner steps and verification limits. No admin has been assigned.
+
+## Original catalogue preview
 
 Buildless static storefront: serve `dist/` with a static HTTP server.
 
