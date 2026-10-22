@@ -1,3 +1,7 @@
+## Activation update — 22 October 2026
+
+Owner confirmed Brevo sender verification, saved custom SMTP, and saved the OTP template. Email-code sign-in is enabled on the private site for the owner to test live delivery. Delivery and end-to-end sign-in are not yet confirmed. The designated sole admin email is `lkjewellers1234@gmail.com`; assign its verified Auth user ID only after successful sign-in. No admin assignment has been made yet.
+
 # L K Jewellers authentication deployment
 
 Project: `pjwhuowljtglrtjxmuzj` (Mumbai), organisation `Laksh Projects`.
