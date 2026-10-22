@@ -35,3 +35,7 @@ The search requests bitmap photos with image metadata, filters unrelated currenc
 Dollar/Dollars is interpreted as jewellery by adding pendant/Indian jewellery context. **The exact Dollar search returned no suitable image in live testing. It now displays no match; it does not substitute thali or a generic necklace.** Free Commons results can be historical and coverage of specific Indian jewellery is limited. A broader licensed image-search API is still needed for reliable coverage of those designs; no such credentials are configured. This is actual keyword retrieval, not an AI generator or an unrestricted Google Images integration.
 
 Live browser checks verified API requests and a loaded Pendant result, no unrelated Dollar fallback, selecting another result, cache persistence, custom query search, custom upload, and mobile layout. Existing demo storage/security/payment limitations still apply.
+
+## Repository and ongoing sync
+
+The project is synced to [laksh150806/LKJ](https://github.com/laksh150806/LKJ). The owner requested prompt GitHub sync after each completed change; this standing instruction is recorded in [AGENTS.md](AGENTS.md). The Sites hosting remote stays separate from the `github` remote. Source control includes the implementation and setup scripts, not live Supabase customer records or SMTP credentials.

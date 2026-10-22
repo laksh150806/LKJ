@@ -1,3 +1,9 @@
 *.png
 check.cjs
 node_modules/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
