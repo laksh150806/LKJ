@@ -1,3 +1,7 @@
+## Admin assignment — 22 October 2026
+
+Verified `lkjewellers1234@gmail.com` has been assigned as the sole admin in `shop_private.admin_account`. The frontend now uses the server-controlled access result and shows Manage shop. Catalogue management is still browser-local and is labelled accordingly; profile data and admin authorization use Supabase. Earlier unassigned/locked notes below describe setup history.
+
 ## Activation update — 22 October 2026
 
 Owner confirmed Brevo sender verification, saved custom SMTP, and saved the OTP template. Email-code sign-in is enabled on the private site for the owner to test live delivery. Delivery and end-to-end sign-in are not yet confirmed. The designated sole admin email is `lkjewellers1234@gmail.com`; assign its verified Auth user ID only after successful sign-in. No admin assignment has been made yet.

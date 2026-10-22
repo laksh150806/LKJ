@@ -2,7 +2,7 @@
 
 ## Current authentication status
 
-Real Supabase session/profile integration is prepared, and the database permissions are deployed. Email sign-in is enabled on the private site for live delivery testing after the owner confirmed SMTP, sender verification and the OTP template. Successful real delivery is still pending. Demo role switching and demo order creation have been removed. See [authentication setup](backend/SETUP.md) for the remaining owner steps and verification limits. No admin has been assigned.
+Real Supabase session/profile integration is prepared, and the database permissions are deployed. Email sign-in is enabled on the private site for live delivery testing after the owner confirmed SMTP, sender verification and the OTP template. Successful real delivery is still pending. Demo role switching and demo order creation have been removed. See [authentication setup](backend/SETUP.md) for the remaining owner steps and verification limits. The verified shop email is now the sole administrator. Admin catalogue edits remain browser-local pending shared inventory integration.
 
 ## Original catalogue preview
 
