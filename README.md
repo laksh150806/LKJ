@@ -1,8 +1,12 @@
 # L K Jewellers
 
-## Current authentication status
+## Current status
 
-Real Supabase session/profile integration is prepared, and the database permissions are deployed. Email sign-in is enabled on the private site for live delivery testing after the owner confirmed SMTP, sender verification and the OTP template. Successful real delivery is still pending. Demo role switching and demo order creation have been removed. See [authentication setup](backend/SETUP.md) for the remaining owner steps and verification limits. The verified shop email is now the sole administrator. Admin catalogue edits remain browser-local pending shared inventory integration.
+Real Supabase email-code sign-in, preferred-name profiles, sole-admin authorization, shared categories/jewellery/settings and photo storage are connected. The verified shop email is the only admin. Product lists load 12 records per page; editing uses database version checks. Previous browser catalogue data can be reviewed and imported from Manage shop without deleting its backup.
+
+See [shared inventory](backend/INVENTORY.md) for database changes, import behaviour and verification, and [authentication setup](backend/SETUP.md) for the earlier setup history. Online orders, payments, live metal rates and delivery are not yet connected. The existing Sites website is still owner-private. Initial prices are sample estimates; manually edited rates are labelled as shop-entered.
+
+Build/check with `npm ci`, `npm run build:auth`, and `npm test`. Serve `dist/` as a static site. Supabase client settings use a public publishable key; no backend secrets belong in the repository.
 
 ## Original catalogue preview
 

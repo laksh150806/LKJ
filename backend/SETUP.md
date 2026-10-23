@@ -1,3 +1,7 @@
+## Shared inventory update — 23 October 2026
+
+Catalogue storage and image uploads are now connected; see [INVENTORY.md](INVENTORY.md). Earlier browser-local and disabled-auth notes below describe setup history. The owner has completed a real email-code sign-in and the verified shop account is the sole admin.
+
 ## Admin assignment — 22 October 2026
 
 Verified `lkjewellers1234@gmail.com` has been assigned as the sole admin in `shop_private.admin_account`. The frontend now uses the server-controlled access result and shows Manage shop. Catalogue management is still browser-local and is labelled accordingly; profile data and admin authorization use Supabase. Earlier unassigned/locked notes below describe setup history.

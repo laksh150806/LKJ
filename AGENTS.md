@@ -13,5 +13,5 @@
 
 - Sole admin email: lkjewellers1234@gmail.com. Authorization comes from the server-controlled singleton `shop_private.admin_account`, never editable user metadata or a client-side email check.
 - Supabase project: pjwhuowljtglrtjxmuzj. Preserve row-level security and customer isolation.
-- Real email sign-in and profiles are connected. Catalogue editing remains browser-local; shared inventory and production payments, rate feeds and delivery are still outstanding. Keep these limits clear.
+- Real email sign-in, profiles, shared inventory and image storage are connected. Product reads are paginated and writes require the sole admin through database RLS. Old browser catalogue data is importable without deleting its backup. Production payments, live rate feeds and delivery are still outstanding; ordering remains closed. See backend/INVENTORY.md.
 - Follow the user's preference for one step at a time when guiding them through external dashboard setup.
