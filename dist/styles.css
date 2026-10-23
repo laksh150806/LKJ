@@ -24,3 +24,6 @@
 
 footer .image-credits-link{font-size:9px;color:var(--muted);padding:0;margin-left:18px;text-decoration:underline;text-underline-offset:3px}.image-credit-entry{padding:8px 0 15px;border-bottom:1px solid var(--line)}.image-credit-entry .cover-credit{max-height:none;overflow:visible;font-size:12px;line-height:1.8}
 .auth-error{color:#8b352b;min-height:1em;font-size:12px;line-height:1.6;margin:12px 0;overflow-wrap:anywhere}
+
+/* Request-first ordering */
+.order-toolbar{display:flex;align-items:end;gap:16px;margin:20px 0}.order-toolbar label{flex:1}.order-toolbar select{width:100%}.order-list{display:grid;gap:14px}.order-card{display:flex;flex-direction:column;gap:8px;text-align:left;border:1px solid var(--line,#ded7cb);background:#f7f2e9;padding:20px;width:100%;color:inherit}.order-card strong{font-size:18px}.order-card small{color:#746d63}.order-terms{margin:20px 0;padding:16px;border:1px solid #ded7cb}.order-terms summary{cursor:pointer;font-weight:500}.preserve-lines{white-space:pre-wrap}.order-toolbar button{white-space:nowrap}#requestForm .checks,#agreeQuote .checks{display:flex;align-items:flex-start;gap:12px;margin:20px 0}#requestForm .checks input,#agreeQuote .checks input{width:20px;min-width:20px;height:20px;margin-top:3px}#decisionForm textarea{width:100%;min-height:100px}#quoteForm textarea{min-height:180px}#quoteTotals{margin-top:20px}

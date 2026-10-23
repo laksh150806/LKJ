@@ -47,3 +47,7 @@ The project is synced to [laksh150806/LKJ](https://github.com/laksh150806/LKJ). 
 ## Automatic metal rates (current)
 
 Live Chennai 22K/18K gold and silver rates are now fetched server-side every five minutes; active pages refresh once a minute. No customer login is needed to see them. Rates show source timestamps in IST and warn on failed/stale updates. Silver uses the listed rate directly as requested. See [backend/LIVE-RATES.md](backend/LIVE-RATES.md) for source URLs, setup, security and failure behavior. This supersedes earlier preview notes about manual/sample metal rates. Payments, accepted orders and delivery integration remain outstanding.
+
+## Request-first checkout (current)
+
+Customers can request delivery or pickup after verified sign-in, with a mandatory address for either option. Admin checks stock and accepts with a final quote or rejects with a reason. Quotes include charges, expected date, editable validity and cancellation terms; customers can agree or cancel before payment. The split is 20% advance / 80% on delivery or pickup. **Payment collection is not enabled yet.** See [backend/ORDERS.md](backend/ORDERS.md) for the implemented workflow, schema, access controls and verification. This supersedes earlier notes that ordering is entirely closed.

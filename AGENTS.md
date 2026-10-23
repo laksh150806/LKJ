@@ -13,5 +13,5 @@
 
 - Sole admin email: lkjewellers1234@gmail.com. Authorization comes from the server-controlled singleton `shop_private.admin_account`, never editable user metadata or a client-side email check.
 - Supabase project: pjwhuowljtglrtjxmuzj. Preserve row-level security and customer isolation.
-- Real email sign-in, profiles, shared inventory and image storage are connected. Product reads are paginated and writes require the sole admin through database RLS. Old browser catalogue data is importable without deleting its backup. Live Chennai rates refresh every five minutes (see backend/LIVE-RATES.md). Production payments and delivery are still outstanding; ordering remains closed. See backend/INVENTORY.md.
+- Real email sign-in, profiles, shared inventory and image storage are connected. Product reads are paginated and writes require the sole admin through database RLS. Old browser catalogue data is importable without deleting its backup. Live Chennai rates refresh every five minutes (see backend/LIVE-RATES.md). Order requests, admin quotes and stock holds are connected (backend/ORDERS.md). 20% advance / 80% on delivery or pickup is the chosen split; payments are not connected and no request can be marked paid. See backend/INVENTORY.md.
 - Follow the user's preference for one step at a time when guiding them through external dashboard setup.

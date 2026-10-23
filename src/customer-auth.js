@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { createOrders } from './orders.js';
 import { createInventory } from './inventory.js';
 import { normalizeName, authMessage } from './auth-validation.js';
 
@@ -42,6 +43,7 @@ export function createCustomerAuth(config) {
   });
   return {
     inventory: createInventory(client),
+    orders: createOrders(client),
     get state() { return { ...state }; },
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     refresh,
