@@ -43,3 +43,7 @@ Live browser checks verified API requests and a loaded Pendant result, no unrela
 ## Repository and ongoing sync
 
 The project is synced to [laksh150806/LKJ](https://github.com/laksh150806/LKJ). The owner requested prompt GitHub sync after each completed change; this standing instruction is recorded in [AGENTS.md](AGENTS.md). The Sites hosting remote stays separate from the `github` remote. Source control includes the implementation and setup scripts, not live Supabase customer records or SMTP credentials.
+
+## Automatic metal rates (current)
+
+Live Chennai 22K/18K gold and silver rates are now fetched server-side every five minutes; active pages refresh once a minute. No customer login is needed to see them. Rates show source timestamps in IST and warn on failed/stale updates. Silver uses the listed rate directly as requested. See [backend/LIVE-RATES.md](backend/LIVE-RATES.md) for source URLs, setup, security and failure behavior. This supersedes earlier preview notes about manual/sample metal rates. Payments, accepted orders and delivery integration remain outstanding.

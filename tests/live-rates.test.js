@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {parseRates} from '../backend/functions/sync-metal-rates/parser.js';
+import {rateState} from '../dist/rate-status.js';
+const now=Date.parse('2026-10-23T09:00:00Z');
+const row=c=>'<tr>'+c.map(x=>`<td>${x}</td>`).join('')+'</tr>';
+const main=`Chennai Gold Rate Last Update Time: 23/10/2026 9:38:48 AM<table><tr><th>Pure Gold (24 k) Standard Gold (22 K)</th></tr>${row(['23/Oct/2026','14,247','113,976','13,060','104,480'])}</table>Chennai Silver Rate Last Update Time: 23/10/2026 9:38:48 AM<table><tr><th>Silver 1 Gm Ready Silver (1 Kg)</th></tr>${row(['23/Oct/2026','225.00','225,000.00'])}</table>`;
+const eighteen=`LAST UPDATE TIME:9:41:41 AM<table><tr><th>18k Gold Rate 1 (grm) 8 (grm) 10 (grm)</th></tr>${row(['23/October/2026','10690.00','85520.00','106900.00'])}</table>`;
+test('parse source-specific rates and IST timestamps, use silver directly',()=>{const r=parseRates(main,eighteen,now);assert.equal(r.gold_22,13060);assert.equal(r.gold_18,10690);assert.equal(r.silver_925,225);assert.equal(r.rate_source_times.gold_22,'2026-10-23T04:08:48.000Z');assert.equal(r.rate_source_times.gold_18,'2026-10-23T04:11:41.000Z');});
+test('reject changed columns, unit mismatch, stale, future and invalid source data',()=>{for(const html of [main.replace('104,480','104,000'),main.replace('225.00','0'),main.replace('Standard Gold (22 K)','Other gold'),main.replace('23/10/2026','22/10/2026')])assert.throws(()=>parseRates(html,eighteen,now));assert.throws(()=>parseRates(main,eighteen,now+4*86400000));assert.throws(()=>parseRates(main,eighteen,now-86400000));assert.throws(()=>parseRates('Access denied',eighteen,now));});
+test('source changes become new prices; failure freshness cannot masquerade as current',()=>{const r=parseRates(main.replaceAll('13,060','13,100').replaceAll('104,480','104,800'),eighteen,now);assert.equal(r.gold_22,13100);assert.equal(rateState(r,now).label,'LIVE CHENNAI');assert.equal(rateState(r,now+16*60000).label,'CHECK DELAYED');assert.equal(rateState({...r,rate_sync_error:'failed'},now).label,'CHECK DELAYED');assert.equal(rateState({...r,rate_checked_at:new Date(now+2*86400000).toISOString()},now+2*86400000).label,'OLDER SOURCE RATES');assert.equal(rateState(null,now).label,'RATES UNAVAILABLE');});

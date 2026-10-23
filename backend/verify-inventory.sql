@@ -25,7 +25,8 @@ do $$ declare changed integer; begin
  begin insert into public.jewellery(name,metal,category,purity,weight,charge_type,charge,photos) values('Forbidden','Gold','__QA renamed','22K',2,'fixed',100,array['assets/ring.jpg']); raise exception 'Customer created jewellery'; exception when insufficient_privilege then null; end;
  update public.jewellery set name='Customer overwrite' where category='__QA renamed';get diagnostics changed=row_count;if changed<>0 then raise exception 'Customer edited jewellery';end if;
  delete from public.jewellery where category='__QA renamed';get diagnostics changed=row_count;if changed<>0 then raise exception 'Customer deleted jewellery';end if;
- update public.shop_settings set gold_22=1;get diagnostics changed=row_count;if changed<>0 then raise exception 'Customer changed rate';end if;
+ begin update public.shop_settings set gold_22=1;raise exception 'Customer changed rate';exception when insufficient_privilege then null;end;
+ update public.shop_settings set gst=1;get diagnostics changed=row_count;if changed<>0 then raise exception 'Customer changed checkout settings';end if;
 end $$;
 reset role;
 set local role anon;
