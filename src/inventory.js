@@ -7,7 +7,7 @@ export function inventoryError(error) {
   return Object.assign(new Error(message),{code:error?.code,status:error?.status});
 }
 const fromRow = row => ({ ...row, chargeType: row.charge_type, isSample: row.is_sample, category: row.category });
-const productFields = 'id,name,metal,category,purity,weight,charge_type,charge,description,photos,tag,is_sample,version,created_at,preview_price,stock_quantity';
+const productFields = 'id,name,metal,category,purity,weight,charge_type,charge,description,photos,tag,is_sample,version,created_at,preview_price';
 export function createInventory(client) {
   const bucket = client.storage.from('jewellery-images');
   function check(result) { if (result.error) throw inventoryError(result.error); return result.data; }
@@ -72,7 +72,7 @@ export function createInventory(client) {
     },
     async saveProduct(item,version=null,legacyId=null) {
       const prepared = await preparePhotos(item.photos);
-      const row={id:item.id,name:item.name,metal:item.metal,category:item.category,purity:item.purity,weight:item.weight,charge_type:item.chargeType,charge:item.charge,description:item.description||'',photos:prepared.photos,tag:item.tag||'',is_sample:Boolean(item.isSample),stock_quantity:Number(item.stock_quantity||0)};
+      const row={id:item.id,name:item.name,metal:item.metal,category:item.category,purity:item.purity,weight:item.weight,charge_type:item.chargeType,charge:item.charge,description:item.description||'',photos:prepared.photos,tag:item.tag||'',is_sample:Boolean(item.isSample)};
       if(legacyId)row.legacy_id=legacyId;
       try {
         if(version!==null)return await changed(client.from('jewellery').update(row).eq('id',item.id).eq('version',version));

@@ -51,3 +51,5 @@ Live Chennai 22K/18K gold and silver rates are now fetched server-side every fiv
 ## Request-first checkout (current)
 
 Customers can request delivery or pickup after verified sign-in, with a mandatory address for either option. Admin checks stock and accepts with a final quote or rejects with a reason. Quotes include charges, expected date, editable validity and cancellation terms; customers can agree or cancel before payment. The split is 20% advance / 80% on delivery or pickup. **Payment collection is not enabled yet.** See [backend/ORDERS.md](backend/ORDERS.md) for the implemented workflow, schema, access controls and verification. This supersedes earlier notes that ordering is entirely closed.
+
+The shop works with made-to-order designs: there are no stock or quantity controls and no inventory-based acceptance restrictions. Admin supplies the final quote and expected date, including making time. The receive-order choices are “Deliver to my address” and “Collect from shop”.
