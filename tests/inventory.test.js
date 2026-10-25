@@ -40,3 +40,11 @@ test('an uncertain database response never deletes images that may already be re
  await assert.rejects(createInventory(client).saveProduct({id:crypto.randomUUID(),photos:['data:image/png;base64,iVBORw0KGgo=']}),/could not be saved/);
  assert.equal(removed,0);
 });
+
+test('styled photos retain originals without duplicating unchanged uploads',async()=>{
+ const {client,calls}=fakeClient({data:{id:'piece'}});let uploads=0;
+ client.storage.from=()=>({upload:async()=>{uploads++;return {data:{}}},getPublicUrl:path=>({data:{publicUrl:'https://example.com/'+path}}),remove:async()=>({data:[]})});
+ const original='data:image/png;base64,iVBORw0KGgo=',styled='data:image/png;base64,iVBORw0KGgoAAA==';
+ await createInventory(client).saveProduct({id:'piece',photos:[styled,original],photo_originals:[original,original]});
+ const row=calls.find(c=>c[0]==='insert')[1];assert.equal(uploads,2);assert.equal(row.photos.length,2);assert.equal(row.photo_originals.length,2);assert.equal(row.photo_originals[0],row.photos[1]);assert.equal(row.photo_originals[1],row.photos[1]);assert.notEqual(row.photos[0],row.photo_originals[0]);
+});

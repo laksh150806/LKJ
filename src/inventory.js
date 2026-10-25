@@ -7,7 +7,7 @@ export function inventoryError(error) {
   return Object.assign(new Error(message),{code:error?.code,status:error?.status});
 }
 const fromRow = row => ({ ...row, chargeType: row.charge_type, isSample: row.is_sample, category: row.category });
-const productFields = 'id,name,metal,category,purity,weight,charge_type,charge,description,photos,tag,is_sample,version,created_at,preview_price';
+const productFields = 'id,name,metal,category,purity,weight,charge_type,charge,description,photos,tag,is_sample,version,created_at,preview_price,photo_originals';
 export function createInventory(client) {
   const bucket = client.storage.from('jewellery-images');
   function check(result) { if (result.error) throw inventoryError(result.error); return result.data; }
@@ -71,8 +71,11 @@ export function createInventory(client) {
       catch(error){await cleanupRejected(prepared,error);throw error;}
     },
     async saveProduct(item,version=null,legacyId=null) {
-      const prepared = await preparePhotos(item.photos);
-      const row={id:item.id,name:item.name,metal:item.metal,category:item.category,purity:item.purity,weight:item.weight,charge_type:item.chargeType,charge:item.charge,description:item.description||'',photos:prepared.photos,tag:item.tag||'',is_sample:Boolean(item.isSample)};
+      const sources=[...item.photos];
+      const originals=item.photos.map((photo,i)=>item.photo_originals?.[i]||photo);
+      const originalIndexes=originals.map(src=>{let i=sources.indexOf(src);if(i<0){i=sources.length;sources.push(src)}return i});
+      const prepared = await preparePhotos(sources);
+      const row={id:item.id,name:item.name,metal:item.metal,category:item.category,purity:item.purity,weight:item.weight,charge_type:item.chargeType,charge:item.charge,description:item.description||'',photos:prepared.photos.slice(0,item.photos.length),photo_originals:originalIndexes.map(i=>prepared.photos[i]),tag:item.tag||'',is_sample:Boolean(item.isSample)};
       if(legacyId)row.legacy_id=legacyId;
       try {
         if(version!==null)return await changed(client.from('jewellery').update(row).eq('id',item.id).eq('version',version));
